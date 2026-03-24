@@ -45,7 +45,13 @@ abstract class AppSizes {
   // Specific screen-edge padding (Very useful!)
   static const pScreen = EdgeInsets.symmetric(horizontal: p16, vertical: p8);
   static const pH16 = EdgeInsets.symmetric(horizontal: p16);
+  static const pH12 = EdgeInsets.symmetric(horizontal: p12);
+  static const pH8 = EdgeInsets.symmetric(horizontal: p8);
+  static const pH4 = EdgeInsets.symmetric(horizontal: p4);
   static const pV16 = EdgeInsets.symmetric(vertical: p16);
+  static const pV12 = EdgeInsets.symmetric(vertical: p12);
+  static const pV8 = EdgeInsets.symmetric(vertical: p8);
+  static const pV4 = EdgeInsets.symmetric(vertical: p4);
 
   // 6. Icon & Image Sizes
   static const double iconSm = 16.0;

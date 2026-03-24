@@ -12,9 +12,7 @@ class Noteo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Noteo',
-      theme: ThemeData(
-        fontFamily: "Inria Serif",
-      ),
+      theme: ThemeData(fontFamily: "Inria Serif"),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
     );

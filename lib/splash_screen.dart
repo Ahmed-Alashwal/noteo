@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/sizes.dart';
 import 'package:note_app/core/constants/text_style.dart';
+import 'package:note_app/core/widgets/app_logo_widget.dart';
 import 'package:note_app/features/note/presentation/screens/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -44,11 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             children: [
               const Spacer(), //
-              SvgPicture.asset(
-                "assets/icons/splash_logo.svg",
-                width: 65,
-                height: 65,
-              ),
+              const AppLogoWidget(width: 64, height: 64),
               Gap(12),
               Text(
                 "Write your notes down...",
