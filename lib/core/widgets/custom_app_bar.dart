@@ -11,19 +11,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   //
-  Size get preferredSize => const Size.fromHeight(65);
+  Size get preferredSize => const Size.fromHeight(75);
 
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: const Size(double.infinity, 65),
-      child: AppBar(
-        backgroundColor: AppColors.bgPrimary,
-        title: Padding(
-          padding: AppSizes.pH4,
-          child: title != null
+    return Container(
+      margin: EdgeInsets.only(bottom: 8),
+      child: PreferredSize(
+        preferredSize: preferredSize,
+        child: AppBar(
+          backgroundColor: AppColors.bgPrimary,
+          iconTheme: IconThemeData(color: AppColors.textPrimary),
+          title: title != null
               ? Text(title!, style: AppTextStyles.h1)
-              : const AppLogoWidget(),
+              : Padding(padding: AppSizes.pH8, child: const AppLogoWidget()),
         ),
       ),
     );

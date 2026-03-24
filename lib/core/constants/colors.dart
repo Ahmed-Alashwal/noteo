@@ -8,6 +8,6 @@ abstract class AppColors {
   static const Color bgLightRed = Color(0xFFFF3336);
   static const Color bgDarkRed = Color(0xFF991F21);
   // For Text (txt)
-  static const Color txtPrimary = Color(0xFFFFFFFF);
-  static const Color txttSecondary = Color(0xFF757575);
+  static const Color textPrimary = Color(0xFFFFFFFF);
+  static const Color textSecondary = Color(0xFF757575);
 }
