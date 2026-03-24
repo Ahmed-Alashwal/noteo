@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
-          return CustomNoteCardWidget();
+          return const CustomNoteCardWidget();
         },
       ),
     );
