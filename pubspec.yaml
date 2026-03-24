@@ -38,7 +38,7 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   intl: ^0.20.2
- 
+
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   build_runner: ^2.4.13
@@ -76,10 +76,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Schyler
+    - family: "Inria Serif"
       fonts:
-        - asset: assets/fonts/Bitter-Regular.ttf
-        - asset: assets/fonts/Bitter-SemiBold.ttf
+        - asset: assets/fonts/InriaSerif-Regular.ttf
+        - asset: assets/fonts/InriaSerif-Bold.ttf
+        - asset: assets/fonts/InriaSerif-Light.ttf
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 

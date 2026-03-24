@@ -1,3 +1,13 @@
-abstract class AppColors{
-  
+import 'dart:ui';
+
+abstract class AppColors {
+  // For Backgrounds (bg)
+  static const Color bgPrimary = Color(0xff111111);
+  static const Color bgSecondary = Color(0xff333333);
+  static const Color bgWhite = Color(0xffFFFFFF);
+  static const Color bgLightRed = Color(0xFFFF3336);
+  static const Color bgDarkRed = Color(0xFF991F21);
+  // For Text (txt)
+  static const Color txtPrimary = Color(0xFFFFFFFF);
+  static const Color txttSecondary = Color(0xFF757575);
 }

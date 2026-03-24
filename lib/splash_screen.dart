@@ -1,10 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
+import 'package:note_app/core/constants/colors.dart';
+import 'package:note_app/core/constants/sizes.dart';
+import 'package:note_app/core/constants/text_style.dart';
+import 'package:note_app/features/note/presentation/screens/home_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    _navigate(); //
+    super.initState();
+  }
+
+  void _navigate() {
+    //
+    Future.delayed(
+      const Duration(seconds: 3), //
+      () {
+        if (!mounted) return; //
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const HomeScreen()), //
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: AppColors.bgPrimary,
+      body: Center(
+        child: Padding(
+          padding: AppSizes.pV16,
+          child: Column(
+            children: [
+              const Spacer(), //
+              SvgPicture.asset(
+                "assets/icons/splash_logo.svg",
+                width: 65,
+                height: 65,
+              ),
+              Gap(12),
+              Text(
+                "Write your notes down...",
+                style: AppTextStyles.verySmall12Regular,
+              ),
+              const Spacer(), //
+              Text(
+                "Created By Ahmed Alashwal",
+                style: AppTextStyles.verySmall12Bold,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

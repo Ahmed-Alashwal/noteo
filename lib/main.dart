@@ -10,6 +10,13 @@ class Noteo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Noteo', home: const SplashScreen());
+    return MaterialApp(
+      title: 'Noteo',
+      theme: ThemeData(
+        fontFamily: "Inria Serif",
+      ),
+      debugShowCheckedModeBanner: false,
+      home: const SplashScreen(),
+    );
   }
 }
