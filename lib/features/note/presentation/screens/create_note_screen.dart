@@ -8,9 +8,9 @@ class CreateNoteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.bgSecondary,
-      appBar: const CustomAppBar(title: "Create Note"),
+      appBar: CustomAppBar(title: "Create Note"),
       body: CustomCreateNoteBody(),
     );
   }

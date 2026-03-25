@@ -14,7 +14,7 @@ class CustomNoteCardBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: AppSizes.pV4,
-      margin: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: AppColors.bgPrimary,
         borderRadius: AppSizes.r8,
@@ -23,11 +23,11 @@ class CustomNoteCardBody extends StatelessWidget {
         padding: AppSizes.pAll16,
         child: Row(
           children: [
-            Expanded(
+            const Expanded(
               child: Row(
                 children: [
                   Icon(Icons.note, color: AppColors.textPrimary, size: 32),
-                  const SizedBox(width: 24),
+                  SizedBox(width: 24),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
