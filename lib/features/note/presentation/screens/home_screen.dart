@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/widgets/custom_app_bar.dart';
 import 'package:note_app/core/widgets/custom_list_view_builder.dart';
+import 'package:note_app/features/note/presentation/widgets/custom_floating_action_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: AppColors.bgSecondary,
       appBar: const CustomAppBar(),
       body: const CustomListViewBuilder(),
+      floatingActionButton: const CustomFloatingActionButton(),
     );
   }
 }
