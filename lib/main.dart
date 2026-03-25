@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/splash_screen.dart';
+import 'package:note_app/features/splash/presentation/screens/splash_screen.dart';
 
 void main() {
   runApp(const Noteo());
