@@ -36,21 +36,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.bgPrimary,
       body: Center(
         child: Padding(
           padding: AppSizes.pV16,
           child: Column(
             children: [
-              const Spacer(), //
-              const AppLogoWidget(width: 64, height: 64),
+              Spacer(), //
+              AppLogoWidget(width: 64, height: 64),
               Gap(12),
               Text(
                 "Write your notes down...",
                 style: AppTextStyles.verySmall12Regular,
               ),
-              const Spacer(), //
+              Spacer(), //
               Text(
                 "Created By Ahmed Alashwal",
                 style: AppTextStyles.verySmall12Bold,
