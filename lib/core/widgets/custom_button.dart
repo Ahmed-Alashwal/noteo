@@ -5,8 +5,16 @@ import 'package:note_app/core/constants/text_style.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
+  final Color? backgroundColor;
+  final bool? hasShadow;
   final void Function()? onTap;
-  const CustomButton({super.key, required this.label, this.onTap});
+  const CustomButton({
+    super.key,
+    required this.label,
+    this.backgroundColor,
+    this.hasShadow = false,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +24,18 @@ class CustomButton extends StatelessWidget {
         padding: AppSizes.pAll12,
         width: 96,
         decoration: BoxDecoration(
-          color: AppColors.bgPrimary,
+          color: backgroundColor ?? AppColors.bgPrimary,
           borderRadius: AppSizes.r8,
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.bgWhite,
-              blurRadius: 12,
-              offset: Offset(2, 2),
-              spreadRadius: -2,
-            ),
-          ],
+          boxShadow: hasShadow == false
+              ? null
+              : [
+                  BoxShadow(
+                    color: AppColors.bgWhite,
+                    blurRadius: 12,
+                    offset: Offset(2, 2),
+                    spreadRadius: -2,
+                  ),
+                ],
         ),
         child: Center(child: Text(label, style: AppTextStyles.small14Bold)),
       ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/sizes.dart';
 import 'package:note_app/core/constants/text_style.dart';
-import 'package:note_app/core/utils/functions/show_snack_bar.dart';
+import 'package:note_app/core/utils/functions/show_alert_dialog.dart';
 import 'package:note_app/core/widgets/custom_date_time_widget.dart';
 import 'package:note_app/features/note/presentation/screens/update_note_screen.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_icon_button.dart';
@@ -50,8 +50,8 @@ class CustomNoteCardBody extends StatelessWidget {
                 Row(
                   children: [
                     CustomIconButton(
-                      myIcon: Icon(Icons.edit),
-                      myOnPressed: () {
+                      icon: const Icon(Icons.edit),
+                      onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -61,15 +61,10 @@ class CustomNoteCardBody extends StatelessWidget {
                       },
                     ),
                     CustomIconButton(
-                      myBackgroundColor: AppColors.bgLightRed,
-                      myIcon: Icon(Icons.delete),
-                      myOnPressed: () {
-                        showSnackBar(
-                          context,
-                          message: "Success deletion",
-                          backgroundColor: AppColors.success,
-                          icon: "assets/icons/happy_circle.svg",
-                        );
+                      backgroundColor: AppColors.bgLightRed,
+                      icon: const Icon(Icons.delete),
+                      onPressed: () {
+                        showAlertDialog(context);
                       },
                     ),
                   ],
