@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/sizes.dart';
 import 'package:note_app/core/constants/text_style.dart';
@@ -23,10 +24,10 @@ class CustomNoteCardBody extends StatelessWidget {
         padding: AppSizes.pAll16,
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
-                  Icon(Icons.note, color: AppColors.textPrimary, size: 32),
+                  SvgPicture.asset("assets/icons/happy_circle.svg"),
                   SizedBox(width: 24),
                   Expanded(
                     child: Column(
