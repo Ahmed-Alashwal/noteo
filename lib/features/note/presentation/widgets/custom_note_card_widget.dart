@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/features/note/presentation/screens/create_note_screen.dart';
+import 'package:note_app/features/note/presentation/screens/update_note_screen.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_note_card_content.dart';
 
 class CustomNoteCardWidget extends StatelessWidget {
@@ -11,7 +11,7 @@ class CustomNoteCardWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const CreateNoteScreen()),
+          MaterialPageRoute(builder: (context) => const UpdateNoteScreen()),
         );
       },
       child: const CustomNoteCardBody(),
