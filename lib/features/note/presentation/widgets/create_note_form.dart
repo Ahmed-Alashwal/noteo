@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:note_app/core/constants/colors.dart';
-import 'package:note_app/core/utils/functions/show_snack_bar.dart';
 import 'package:note_app/core/utils/functions/validators.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
 import 'package:note_app/core/widgets/custom_text_form_field.dart';
@@ -40,32 +38,20 @@ class CreateNoteForm extends StatelessWidget {
             labelText: "Content",
             hintText: "Content...",
             controller: contentController,
-            validator: (value) {
-              return noteTFFValidator(data: value);
-            },
+            validator: (value) => noteTFFValidator(data: value),
           ),
           const Gap(24),
           CustomButton(
             label: "Save",
+            hasShadow: true,
             onTap: () {
-              if (_formKey.currentState!.validate()) {
-                showSnackBar(
-                  context,
-                  message: "Success",
-                  backgroundColor: AppColors.success,
-                  icon: "assets/icons/happy_circle.svg",
-                );
-                titleController.clear();
-                contentController.clear();
-                Navigator.pop(context);
-              } else {
-                showSnackBar(
-                  context,
-                  message: "Error",
-                  backgroundColor: AppColors.error,
-                  icon: "assets/icons/sad_circle.svg",
-                );
-              }
+              validateWholeNoteForm(
+                context,
+                formKey: _formKey,
+                titleController: titleController,
+                contentController: contentController,
+                message: "Created",
+              );
             },
           ),
         ],
