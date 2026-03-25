@@ -10,13 +10,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.bgSecondary,
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       body: 1 == 1
-          ? const NoNoteWidget()
-          : const CustomListViewBuilder(),
-      floatingActionButton: const CustomFloatingActionButton(),
+          ? NoNoteWidget()
+          : CustomListViewBuilder(),
+      floatingActionButton: CustomFloatingActionButton(),
     );
   }
 }
