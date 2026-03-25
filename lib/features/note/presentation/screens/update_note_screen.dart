@@ -8,10 +8,10 @@ class UpdateNoteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.bgSecondary,
-      appBar: const CustomAppBar(title: "Update Note"),
-      body: const CustomUpdateNoteScreenBody(),
+      appBar: CustomAppBar(title: "Update Note"),
+      body: CustomUpdateNoteScreenBody(),
     );
   }
 }
