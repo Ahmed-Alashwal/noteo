@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/text_style.dart';
+import 'package:note_app/core/utils/functions/show_snack_bar.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
 
 Future<dynamic> showAlertDialog(BuildContext context) {
@@ -28,6 +29,7 @@ Future<dynamic> showAlertDialog(BuildContext context) {
                 label: "Cancel",
                 backgroundColor: AppColors.bgSecondary,
                 onTap: () {
+                  Feedback.forTap(context); // Triggers sound/vibration
                   Navigator.pop(context);
                 },
               ),
@@ -35,6 +37,11 @@ Future<dynamic> showAlertDialog(BuildContext context) {
                 label: "Deletion",
                 backgroundColor: AppColors.error,
                 onTap: () {
+                  Feedback.forTap(context); // Triggers sound/vibration
+                  showSucessSnackBar(
+                    context,
+                    message: "Note deleted successfully",
+                  );
                   Navigator.pop(context);
                 },
               ),
