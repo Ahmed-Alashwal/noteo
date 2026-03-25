@@ -27,7 +27,7 @@ class CustomButton extends StatelessWidget {
             ),
           ],
         ),
-        child: Center(child: Text("Save", style: AppTextStyles.normal16Bold)),
+        child: Center(child: Text(label, style: AppTextStyles.small14Bold)),
       ),
     );
   }
