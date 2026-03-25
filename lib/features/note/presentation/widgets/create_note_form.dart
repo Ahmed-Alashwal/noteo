@@ -55,6 +55,9 @@ class CreateNoteForm extends StatelessWidget {
                   backgroundColor: AppColors.success,
                   icon: "assets/icons/happy_circle.svg",
                 );
+                titleController.clear();
+                contentController.clear();
+                Navigator.pop(context);
               } else {
                 showSnackBar(
                   context,

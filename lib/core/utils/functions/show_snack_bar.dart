@@ -9,6 +9,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showSnackBar(
   required Color backgroundColor,
   String? icon,
 }) {
+  ScaffoldMessenger.of(context).clearSnackBars(); // sure about it?!
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
