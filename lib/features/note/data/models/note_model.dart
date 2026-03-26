@@ -1,11 +1,12 @@
 import 'package:hive/hive.dart';
+import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
 part 'note_model.g.dart';
 
 @HiveType(typeId: 0)
-class NoteModel {
+class NoteModel extends NoteEntity {
   @HiveField(0)
-  final int? id;
+  final String id;
   @HiveField(1)
   final String title;
   @HiveField(2)
@@ -16,12 +17,18 @@ class NoteModel {
   final DateTime? updatedAt;
 
   const NoteModel({
-    this.id,
+    required this.id,
     required this.title,
     required this.content,
     this.createdAt,
     this.updatedAt,
-  });
+  }) : super(
+         id: id,
+         title: title,
+         content: content,
+         createdAt: createdAt,
+         updatedAt: updatedAt,
+       );
 
   // From API to Flutter
   factory NoteModel.fromJson(Map<String, dynamic> json) {
