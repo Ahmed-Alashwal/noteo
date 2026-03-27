@@ -5,7 +5,7 @@ import 'package:note_app/features/note/domain/entities/note_entity.dart';
 abstract class NoteLocalDataSource {
   List<NoteEntity> fetchAllNotes();
   Future<void> createNote({required NoteEntity noteEntity});
-  Future<void> updateNote({required NoteEntity newNoteEntity});
+  Future<void> updateNote({required NoteEntity updatedNoteEntity});
   Future<void> deleteNote({required int noteId});
 }
 
@@ -23,9 +23,9 @@ class NoteLocalDataSourceImpl extends NoteLocalDataSource {
   }
 
   @override
-  Future<void> updateNote({required NoteEntity newNoteEntity}) async {
+  Future<void> updateNote({required NoteEntity updatedNoteEntity}) async {
     var box = Hive.box<NoteEntity>(AppString.kNoteBox);
-    await box.put(newNoteEntity.id, newNoteEntity);
+    await box.put(updatedNoteEntity.id, updatedNoteEntity);
   }
 
   @override

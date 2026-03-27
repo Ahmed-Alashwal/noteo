@@ -7,7 +7,7 @@ import 'package:note_app/features/note/domain/entities/note_entity.dart';
 abstract class NoteRemoteDataSource {
   Future<List<NoteEntity>> fetchAllNotes();
   Future<void> createNote({required NoteEntity noteEntity});
-  Future<void> updateNote({required NoteEntity newNoteEntity});
+  Future<void> updateNote({required NoteEntity updatedNoteEntity});
   Future<void> deleteNote({required String noteId});
 }
 
@@ -41,10 +41,10 @@ class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
   }
 
   @override
-  Future<void> updateNote({required NoteEntity newNoteEntity}) async {
+  Future<void> updateNote({required NoteEntity updatedNoteEntity}) async {
     await apiService.put(
-      endPoint: 'notes/${newNoteEntity.id}',
-      body: NoteModel.fromEntity(noteEntity: newNoteEntity).toJson(),
+      endPoint: 'notes/${updatedNoteEntity.id}',
+      body: NoteModel.fromEntity(noteEntity: updatedNoteEntity).toJson(),
     );
   }
 

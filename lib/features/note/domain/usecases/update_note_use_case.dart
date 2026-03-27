@@ -11,6 +11,6 @@ class UpdateNoteUseCase extends UseCase<void, NoteEntity> {
 
   @override
   Future<Either<Failure, void>> call([NoteEntity? newNoteEntity]) {
-    return noteRepository.updateNote(newNoteEntity: newNoteEntity!);
+    return noteRepository.updateNote(updatedNoteEntity: newNoteEntity!);
   }
 }
