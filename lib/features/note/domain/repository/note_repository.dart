@@ -6,5 +6,5 @@ abstract class NoteRepository {
   Future<Either<Failure, List<NoteEntity>>> fetchAllNotes();
   Future<Either<Failure, void>> createNote({required NoteEntity noteEntity});
   Future<Either<Failure, void>> updateNote({required NoteEntity newNoteEntity});
-  Future<Either<Failure, void>> deleteNote({required String id});
+  Future<Either<Failure, void>> deleteNote({required String noteId});
 }

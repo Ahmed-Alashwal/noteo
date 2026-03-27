@@ -10,6 +10,6 @@ class DeleteNoteUseCase extends UseCase<void, String> {
 
   @override
   Future<Either<Failure, void>> call([String? id]) {
-    return noteRepository.deleteNote(id: id!);
+    return noteRepository.deleteNote(noteId: id!);
   }
 }

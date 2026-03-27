@@ -6,7 +6,7 @@ abstract class NoteRemoteDataSource {
   Future<List<NoteEntity>> fetchAllNotes();
   Future<void> createNote({required NoteEntity noteEntity});
   Future<void> updateNote({required NoteEntity newNoteEntity});
-  Future<void> deleteNote({required String id});
+  Future<void> deleteNote({required String noteId});
 }
 
 class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
@@ -45,5 +45,7 @@ class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
   Future<void> updateNote({required NoteEntity newNoteEntity}) async {}
 
   @override
-  Future<void> deleteNote({required String id}) async {}
+  Future<void> deleteNote({required String noteId}) async {
+    await apiService.delete(endPoint: "notes", id: noteId);
+  }
 }

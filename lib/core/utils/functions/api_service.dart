@@ -13,4 +13,8 @@ class ApiService {
   Future<void> post({required String endPoint, required Map<String, dynamic> body}) async{
     await _dio.post('$baseUrl$endPoint', data: body);
   }
+
+  Future<void> delete({required String endPoint, required String id})async {
+    await _dio.delete('$baseUrl$endPoint/$id');
+  }
 }
