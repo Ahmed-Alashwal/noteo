@@ -16,7 +16,7 @@ class CreateNoteCubit extends Cubit<CreateNoteState> {
     var result = await createNoteUseCase.call(noteEntity);
     result.fold(
       (failure) => emit(
-        CreateNoteFailure(errMessage: "Error while create a new note!"),
+        CreateNoteFailure(errMessage: "Error while create a note!"),
       ),
       (success) => emit(CreateNoteSuccess()),
     );

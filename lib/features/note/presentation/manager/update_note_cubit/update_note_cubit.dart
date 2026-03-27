@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 import 'package:note_app/features/note/domain/usecases/update_note_use_case.dart';
+
 part 'update_note_state.dart';
 
 class UpdateNoteCubit extends Cubit<UpdateNoteState> {
