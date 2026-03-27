@@ -29,7 +29,13 @@ class NoteRepositoryImpl extends NoteRepository {
   Future<Either<Failure, void>> createNote({
     required NoteEntity noteEntity,
   }) async {
-    
+    try {
+      await noteLocalDataSource.createNote(noteEntity: noteEntity);
+      await noteRemoteDataSource.createNote(noteEntity: noteEntity);
+      return right(null);
+    } catch (e) {
+      return left(Failure());
+    }
   }
 
   @override
