@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:note_app/core/errors/failure.dart';
 import 'package:note_app/features/note/data/data_sources/local/note_local_data_source.dart';
 import 'package:note_app/features/note/data/data_sources/remote/note_remote_data_source.dart';
@@ -21,7 +22,7 @@ class NoteRepositoryImpl extends NoteRepository {
       return right(cachedNotes);
       // var remoteNotes = noteRemoteDataSource.fetchAllNotes();
     } catch (e) {
-      return left(Failure());
+      return left(ServerFailure(errMessage: e.toString()));
     }
   }
 
@@ -34,7 +35,11 @@ class NoteRepositoryImpl extends NoteRepository {
       await noteRemoteDataSource.createNote(noteEntity: noteEntity);
       return right(null);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errMessage: e.toString()));
+      }
     }
   }
 
@@ -51,7 +56,7 @@ class NoteRepositoryImpl extends NoteRepository {
       );
       return right(null);
     } catch (e) {
-      return left(Failure());
+      return left(ServerFailure(errMessage: e.toString()));
     }
   }
 
@@ -62,7 +67,11 @@ class NoteRepositoryImpl extends NoteRepository {
       await noteRemoteDataSource.deleteNote(noteId: noteId);
       return right(null);
     } catch (e) {
-      return left(Failure());
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errMessage: e.toString()));
+      }
     }
   }
 }
