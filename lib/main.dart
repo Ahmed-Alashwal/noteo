@@ -5,7 +5,7 @@ import 'package:note_app/features/note/data/models/note_model.dart';
 import 'package:note_app/features/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
-  Hive.initFlutter();
+  await Hive.initFlutter();
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox(AppString.kNoteBox);
   

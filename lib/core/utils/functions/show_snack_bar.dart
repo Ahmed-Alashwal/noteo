@@ -12,16 +12,17 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showSucessSnackBar(
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        spacing: 8,
         children: [
-          Text(message, style: AppTextStyles.small14Bold),
           SvgPicture.asset(
             "assets/icons/happy_circle.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ), //
+          Text(message, style: AppTextStyles.small14Bold),
         ],
       ),
+      showCloseIcon: true,
       backgroundColor: AppColors.success,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: AppSizes.r12),
@@ -38,16 +39,17 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showErrorSnackBar(
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        spacing: 8,
         children: [
-          Text(message, style: AppTextStyles.small14Bold),
           SvgPicture.asset(
             "assets/icons/sad_circle.svg",
-            width: 20,
-            height: 20,
+            width: 24,
+            height: 24,
           ), //
+          Text(message, style: AppTextStyles.small14Bold),
         ],
       ),
+      showCloseIcon: true,
       backgroundColor: AppColors.error,
       behavior: SnackBarBehavior.floating,
       shape: RoundedRectangleBorder(borderRadius: AppSizes.r12),
