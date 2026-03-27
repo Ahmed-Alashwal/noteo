@@ -31,28 +31,17 @@ class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
 
   @override
   Future<void> createNote({required NoteEntity noteEntity}) async {
-    final noteModel = NoteModel(
-      id: noteEntity.id,
-      title: noteEntity.title,
-      content: noteEntity.content,
-      createdAt: noteEntity.createdAt ?? DateTime.now(),
-      updatedAt: noteEntity.updatedAt ?? DateTime.now(),
+    await apiService.post(
+      endPoint: "notes",
+      body: NoteModel.fromEntity(noteEntity: noteEntity).toJson(),
     );
-    await apiService.post(endPoint: "notes", body: noteModel.toJson());
   }
 
   @override
   Future<void> updateNote({required NoteEntity newNoteEntity}) async {
-    final newNoteModel = NoteModel(
-      id: newNoteEntity.id,
-      title: newNoteEntity.title,
-      content: newNoteEntity.content,
-      createdAt: newNoteEntity.createdAt ?? DateTime.now(),
-      updatedAt: newNoteEntity.updatedAt ?? DateTime.now(),
-    );
     await apiService.put(
       endPoint: 'notes/${newNoteEntity.id}',
-      body: newNoteModel.toJson(),
+      body: NoteModel.fromEntity(noteEntity: newNoteEntity).toJson(),
     );
   }
 

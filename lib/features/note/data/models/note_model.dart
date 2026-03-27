@@ -45,6 +45,14 @@ class NoteModel extends NoteEntity {
     );
   }
 
+  factory NoteModel.fromEntity({required NoteEntity noteEntity}) => NoteModel(
+    id: noteEntity.id,
+    title: noteEntity.title,
+    content: noteEntity.content,
+    createdAt: noteEntity.createdAt ?? DateTime.now(),
+    updatedAt: noteEntity.updatedAt ?? DateTime.now(),
+  );
+  
   // From Flutter to Database
   Map<String, dynamic> toJson() {
     return {
