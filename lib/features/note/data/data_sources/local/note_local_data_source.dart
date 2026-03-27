@@ -25,9 +25,12 @@ class NoteLocalDataSourceImpl extends NoteLocalDataSource {
   @override
   Future<void> updateNote({required NoteEntity newNoteEntity}) async {
     var box = Hive.box<NoteEntity>(AppString.kNoteBox);
-    await box.put(newNoteEntity.id ,newNoteEntity);
+    await box.put(newNoteEntity.id, newNoteEntity);
   }
 
   @override
-  Future<void> deleteNote({required int noteId}) async {}
+  Future<void> deleteNote({required int noteId}) async {
+    var box = Hive.box<NoteEntity>(AppString.kNoteBox);
+    await box.delete(noteId);
+  }
 }
