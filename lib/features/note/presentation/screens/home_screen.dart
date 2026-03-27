@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     return const Scaffold(
       backgroundColor: AppColors.bgSecondary,
       appBar: CustomAppBar(),
-      body: 1 != 1 ? NoNoteWidget() : CustomListViewBuilder(),
+      body: 1 == 1 ? NoNoteWidget() : CustomListViewBuilder(),
       floatingActionButton: CustomFloatingActionButton(),
     );
   }

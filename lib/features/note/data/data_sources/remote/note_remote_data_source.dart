@@ -1,3 +1,5 @@
+import 'package:note_app/core/utils/functions/api_service.dart';
+import 'package:note_app/features/note/data/models/note_model.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
 abstract class NoteRemoteDataSource {
@@ -8,27 +10,31 @@ abstract class NoteRemoteDataSource {
 }
 
 class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
-  @override
-  Future<void> createNote({required NoteEntity noteEntity}) {
-    // TODO: implement createNote
-    throw UnimplementedError();
+  final ApiService apiService;
+
+  NoteRemoteDataSourceImpl({required this.apiService});
+
+  List<NoteEntity> getNoteList(Map<String, dynamic> data) {
+    List<NoteEntity> notes = [];
+    for (var note in data as List) {
+      notes.add(NoteModel.fromJson(note));
+    }
+    return notes;
   }
 
   @override
-  Future<void> deleteNote({required String id}) {
-    // TODO: implement deleteNote
-    throw UnimplementedError();
+  Future<List<NoteEntity>> fetchAllNotes() async {
+    var data = await apiService.get(endPoint: "notes");
+    List<NoteEntity> notes = getNoteList(data);
+    return notes;
   }
 
   @override
-  Future<List<NoteEntity>> fetchAllNotes() {
-    // TODO: implement fetchAllNotes
-    throw UnimplementedError();
-  }
+  Future<void> createNote({required NoteEntity noteEntity}) async {}
 
   @override
-  Future<void> updateNote({required NoteEntity newNoteEntity}) {
-    // TODO: implement updateNote
-    throw UnimplementedError();
-  }
+  Future<void> updateNote({required NoteEntity newNoteEntity}) async {}
+
+  @override
+  Future<void> deleteNote({required String id}) async {}
 }
