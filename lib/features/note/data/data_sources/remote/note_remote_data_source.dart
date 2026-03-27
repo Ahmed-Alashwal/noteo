@@ -1,4 +1,6 @@
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/utils/functions/api_service.dart';
+import 'package:note_app/core/utils/functions/save_notes_locally.dart';
 import 'package:note_app/features/note/data/models/note_model.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
@@ -26,6 +28,7 @@ class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
   Future<List<NoteEntity>> fetchAllNotes() async {
     var data = await apiService.get(endPoint: "notes");
     List<NoteEntity> notes = getNoteList(data);
+    saveNotesLocally(notes: notes, notesBox: AppString.kNoteBox);
     return notes;
   }
 
