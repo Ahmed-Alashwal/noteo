@@ -1,19 +1,10 @@
-import 'package:hive/hive.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
-part 'note_model.g.dart';
-
-@HiveType(typeId: 0)
 class NoteModel extends NoteEntity {
-  @HiveField(0)
   final String id;
-  @HiveField(1)
   final String title;
-  @HiveField(2)
   final String content;
-  @HiveField(3)
   final DateTime? createdAt;
-  @HiveField(4)
   final DateTime? updatedAt;
 
   const NoteModel({

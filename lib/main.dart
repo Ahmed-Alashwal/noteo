@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/constants/strings.dart';
-import 'package:note_app/features/note/data/models/note_model.dart';
+import 'package:note_app/features/note/domain/entities/note_entity.dart';
 import 'package:note_app/features/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(NoteModelAdapter());
+  Hive.registerAdapter(NoteEntityAdapter());
   await Hive.openBox(AppString.kNoteBox);
   
   runApp(const Noteo());

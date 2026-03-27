@@ -1,8 +1,18 @@
+import 'package:hive_flutter/adapters.dart';
+
+part 'note_entity.g.dart';
+
+@HiveType(typeId: 0)
 class NoteEntity {
+  @HiveField(0)
   final String id;
+  @HiveField(1)
   final String title;
+  @HiveField(2)
   final String content;
+  @HiveField(3)
   final DateTime? createdAt;
+  @HiveField(4)
   final DateTime? updatedAt;
 
   const NoteEntity({
