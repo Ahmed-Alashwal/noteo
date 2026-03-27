@@ -1,22 +1,27 @@
+import 'package:hive/hive.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
 abstract class NoteLocalDataSource {
   List<NoteEntity> fetchAllNotes();
-  void createNote({required NoteEntity noteEntity});
-  void updateNote({required NoteEntity newNoteEntity});
-  void deleteNote({required int noteId});
+  Future<void> createNote({required NoteEntity noteEntity});
+  Future<void> updateNote({required NoteEntity newNoteEntity});
+  Future<void> deleteNote({required int noteId});
 }
 
 class NoteLocalDataSourceImpl extends NoteLocalDataSource {
   @override
-  List<NoteEntity> fetchAllNotes() {}
+  List<NoteEntity> fetchAllNotes() {
+    var box = Hive.box<NoteEntity>(AppString.kNoteBox);
+    return box.values.toList();
+  }
 
   @override
-  void createNote({required NoteEntity noteEntity}) {}
+  Future<void> createNote({required NoteEntity noteEntity}) async {}
 
   @override
-  void updateNote({required NoteEntity newNoteEntity}) {}
+  Future<void> updateNote({required NoteEntity newNoteEntity}) async {}
 
   @override
-  void deleteNote({required int noteId}) {}
+  Future<void> deleteNote({required int noteId}) async {}
 }

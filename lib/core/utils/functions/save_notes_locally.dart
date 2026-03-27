@@ -5,6 +5,6 @@ void saveNotesLocally({
   required List<NoteEntity> notes,
   required dynamic notesBox,
 }) {
-  var box = Hive.box(notesBox);
+  var box = Hive.box<List<NoteEntity>>(notesBox);
   box.add(notes);
 }
