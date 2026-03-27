@@ -6,7 +6,7 @@ abstract class NoteLocalDataSource {
   List<NoteEntity> fetchAllNotes();
   Future<void> createNote({required NoteEntity noteEntity});
   Future<void> updateNote({required NoteEntity updatedNoteEntity});
-  Future<void> deleteNote({required int noteId});
+  Future<void> deleteNote({required String noteId});
 }
 
 class NoteLocalDataSourceImpl extends NoteLocalDataSource {
@@ -29,7 +29,7 @@ class NoteLocalDataSourceImpl extends NoteLocalDataSource {
   }
 
   @override
-  Future<void> deleteNote({required int noteId}) async {
+  Future<void> deleteNote({required String noteId}) async {
     var box = Hive.box<NoteEntity>(AppString.kNoteBox);
     await box.delete(noteId);
   }

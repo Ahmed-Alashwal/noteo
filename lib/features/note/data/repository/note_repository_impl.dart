@@ -56,5 +56,13 @@ class NoteRepositoryImpl extends NoteRepository {
   }
 
   @override
-  Future<Either<Failure, void>> deleteNote({required String noteId}) async {}
+  Future<Either<Failure, void>> deleteNote({required String noteId}) async {
+    try {
+      await noteLocalDataSource.deleteNote(noteId: noteId);
+      await noteRemoteDataSource.deleteNote(noteId: noteId);
+      return right(null);
+    } catch (e) {
+      return left(Failure());
+    }
+  }
 }
