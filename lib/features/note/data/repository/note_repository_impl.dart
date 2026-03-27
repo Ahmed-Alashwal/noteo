@@ -17,7 +17,7 @@ class NoteRepositoryImpl extends NoteRepository {
   @override
   Future<Either<Failure, List<NoteEntity>>> fetchAllNotes() async {
     try {
-      var cachedNotes = noteLocalDataSource.fetchAllNotes();
+      List<NoteEntity> cachedNotes = noteLocalDataSource.fetchAllNotes();
       return right(cachedNotes);
       // var remoteNotes = noteRemoteDataSource.fetchAllNotes();
     } catch (e) {
