@@ -22,7 +22,11 @@ class NoteRepositoryImpl extends NoteRepository {
       return right(cachedNotes);
       // var remoteNotes = noteRemoteDataSource.fetchAllNotes();
     } catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errMessage: e.toString()));
+      }
     }
   }
 
@@ -56,7 +60,11 @@ class NoteRepositoryImpl extends NoteRepository {
       );
       return right(null);
     } catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(errMessage: e.toString()));
+      }
     }
   }
 
