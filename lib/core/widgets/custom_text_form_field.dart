@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/sizes.dart';
 import 'package:note_app/core/constants/text_style.dart';
+import 'package:note_app/core/utils/functions/get_text_direction.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextFormField extends StatefulWidget {
   final int? maxLines;
   final String labelText;
   final String hintText;
@@ -21,12 +22,19 @@ class CustomTextFormField extends StatelessWidget {
   });
 
   @override
+  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
+}
+
+class _CustomTextFormFieldState extends State<CustomTextFormField> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
-      validator: validator,
-      autofocus: autofocus!,
-      maxLines: maxLines,
+      controller: widget.controller,
+      validator: widget.validator,
+      textDirection: getTextDirection(text: widget.controller.text),
+      onChanged: (value) => setState(() {}),
+      autofocus: widget.autofocus!,
+      maxLines: widget.maxLines,
       style: AppTextStyles.small14Regular,
       cursorColor: AppColors.textPrimary,
       cursorErrorColor: AppColors.error,
@@ -34,9 +42,9 @@ class CustomTextFormField extends StatelessWidget {
       cursorWidth: 1.5,
       cursorOpacityAnimates: true,
       decoration: InputDecoration(
-        hintText: hintText,
+        hintText: widget.hintText,
         hintStyle: AppTextStyles.small14Regular,
-        labelText: labelText,
+        labelText: widget.labelText,
         labelStyle: AppTextStyles.small14Bold,
         alignLabelWithHint: true,
         border: OutlineInputBorder(
