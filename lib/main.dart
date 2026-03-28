@@ -11,7 +11,7 @@ void main() async {
 
   await Hive.initFlutter();
   Hive.registerAdapter(NoteEntityAdapter());
-  await Hive.openBox(AppString.kNoteBox);
+  await Hive.openBox<NoteEntity>(AppString.kNoteBox);
   
   runApp(const Noteo());
 }
