@@ -17,7 +17,6 @@ class NoteEntityAdapter extends TypeAdapter<NoteEntity> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return NoteEntity(
-      id: fields[0] as String,
       title: fields[1] as String,
       content: fields[2] as String,
       createdAt: fields[3] as DateTime?,

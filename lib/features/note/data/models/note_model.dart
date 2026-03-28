@@ -7,14 +7,13 @@ class NoteModel extends NoteEntity {
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
-  const NoteModel({
+  NoteModel({
     required this.id,
     required this.title,
     required this.content,
     this.createdAt,
     this.updatedAt,
   }) : super(
-         id: id,
          title: title,
          content: content,
          createdAt: createdAt,
@@ -37,13 +36,13 @@ class NoteModel extends NoteEntity {
   }
 
   factory NoteModel.fromEntity({required NoteEntity noteEntity}) => NoteModel(
-    id: noteEntity.id,
+    id: noteEntity.id!,
     title: noteEntity.title,
     content: noteEntity.content,
     createdAt: noteEntity.createdAt ?? DateTime.now(),
     updatedAt: noteEntity.updatedAt ?? DateTime.now(),
   );
-  
+
   // From Flutter to Database
   Map<String, dynamic> toJson() {
     return {
