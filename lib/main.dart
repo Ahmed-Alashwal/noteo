@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/utils/functions/service_locator.dart';
+import 'package:note_app/core/utils/functions/simple_bloc_observer.dart';
 import 'package:note_app/features/note/data/repository/note_repository_impl.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 import 'package:note_app/features/note/domain/usecases/fetch_all_notes_use_case.dart';
@@ -11,6 +12,7 @@ import 'package:note_app/features/splash/presentation/screens/splash_screen.dart
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = SimpleBlocObserver();
   await setupServiceLocator();
 
   await Hive.initFlutter();
