@@ -74,7 +74,7 @@ class CustomNoteCardBody extends StatelessWidget {
                       backgroundColor: AppColors.bgLightRed,
                       icon: const Icon(Icons.delete),
                       onPressed: () {
-                        showAlertDialog(context);
+                        showAlertDialog(context, noteId: noteEntity.id!);
                       },
                     ),
                   ],

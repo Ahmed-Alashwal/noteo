@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/show_snack_bar.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
+import 'package:note_app/features/note/presentation/manager/delete_note_cubit/delete_note_cubit.dart';
+import 'package:note_app/features/note/presentation/manager/fetch_all_notes_cubit/fetch_all_notes_cubit.dart';
 
-Future<dynamic> showAlertDialog(BuildContext context) {
+Future<dynamic> showAlertDialog(
+  BuildContext context, {
+  required String noteId,
+}) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -38,6 +44,8 @@ Future<dynamic> showAlertDialog(BuildContext context) {
                 backgroundColor: AppColors.error,
                 onTap: () {
                   Feedback.forTap(context); // Triggers sound/vibration
+                  context.read<DeleteNoteCubit>().deleteNote(noteId: noteId);
+                  context.read<FetchAllNotesCubit>().fetchAllNotes();
                   showSucessSnackBar(
                     context,
                     message: "Note deleted successfully",
