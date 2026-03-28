@@ -5,11 +5,13 @@ import 'package:note_app/core/constants/sizes.dart';
 import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/show_alert_dialog.dart';
 import 'package:note_app/core/widgets/custom_date_time_widget.dart';
+import 'package:note_app/features/note/domain/entities/note_entity.dart';
 import 'package:note_app/features/note/presentation/screens/update_note_screen.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_icon_button.dart';
 
 class CustomNoteCardBody extends StatelessWidget {
-  const CustomNoteCardBody({super.key});
+  final NoteEntity noteEntity;
+  const CustomNoteCardBody({super.key, required this.noteEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +36,17 @@ class CustomNoteCardBody extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       spacing: 4,
                       children: [
-                        Text("Note Title", style: AppTextStyles.h3),
                         Text(
-                          "Note Content",
+                          noteEntity.title,
+                          style: AppTextStyles.h3,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          noteEntity.content,
                           style: AppTextStyles.small14Regular,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ],
                     ),
