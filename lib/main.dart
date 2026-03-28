@@ -6,8 +6,12 @@ import 'package:note_app/core/utils/functions/service_locator.dart';
 import 'package:note_app/core/utils/functions/simple_bloc_observer.dart';
 import 'package:note_app/features/note/data/repository/note_repository_impl.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
+import 'package:note_app/features/note/domain/usecases/delete_note_use_case.dart';
 import 'package:note_app/features/note/domain/usecases/fetch_all_notes_use_case.dart';
+import 'package:note_app/features/note/domain/usecases/update_note_use_case.dart';
+import 'package:note_app/features/note/presentation/manager/delete_note_cubit/delete_note_cubit.dart';
 import 'package:note_app/features/note/presentation/manager/fetch_all_notes_cubit/fetch_all_notes_cubit.dart';
+import 'package:note_app/features/note/presentation/manager/update_note_cubit/update_note_cubit.dart';
 import 'package:note_app/features/splash/presentation/screens/splash_screen.dart';
 
 void main() async {
@@ -20,12 +24,30 @@ void main() async {
   await Hive.openBox<NoteEntity>(AppString.kNoteBox);
 
   runApp(
-    BlocProvider(
-      create: (context) => FetchAllNotesCubit(
-        fetchAllNotesUseCase: FetchAllNotesUseCase(
-          noteRepository: di.get<NoteRepositoryImpl>(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FetchAllNotesCubit(
+            fetchAllNotesUseCase: FetchAllNotesUseCase(
+              noteRepository: di.get<NoteRepositoryImpl>(),
+            ),
+          )..fetchAllNotes(),
         ),
-      )..fetchAllNotes(),
+        BlocProvider(
+          create: (context) => UpdateNoteCubit(
+            updateNoteUseCase: UpdateNoteUseCase(
+              noteRepository: di.get<NoteRepositoryImpl>(),
+            ),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => DeleteNoteCubit(
+            deleteNoteUseCase: DeleteNoteUseCase(
+              noteRepository: di.get<NoteRepositoryImpl>(),
+            ),
+          ),
+        ),
+      ],
       child: const Noteo(),
     ),
   );
