@@ -14,15 +14,15 @@ class NoteEntity {
   @HiveField(2)
   final String content;
   @HiveField(3)
-  final DateTime? createdAt;
+  final DateTime createdAt;
   @HiveField(4)
-  final DateTime? updatedAt;
+  final DateTime updatedAt;
 
   NoteEntity({
     required this.id,
     required this.title,
     required this.content,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
   });
 }

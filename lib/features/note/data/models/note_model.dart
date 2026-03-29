@@ -4,15 +4,15 @@ class NoteModel extends NoteEntity {
   final String id;
   final String title;
   final String content;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
+  final DateTime createdAt;
+  final DateTime updatedAt;
 
   NoteModel({
     required this.id,
     required this.title,
     required this.content,
-    this.createdAt,
-    this.updatedAt,
+    required this.createdAt,
+    required this.updatedAt,
   }) : super(
          id: id,
          title: title,
@@ -27,12 +27,8 @@ class NoteModel extends NoteEntity {
       id: json['id'],
       title: json['title'],
       content: json['content'],
-      createdAt: json['created_at'] != null
-          ? DateTime.parse(json['created_at'])
-          : null,
-      updatedAt: json['updated_at'] != null
-          ? DateTime.parse(json['updated_at'])
-          : null,
+      createdAt: DateTime.parse(json['created_at']),
+      updatedAt: DateTime.parse(json['created_at']),
     );
   }
 
@@ -40,8 +36,8 @@ class NoteModel extends NoteEntity {
     id: noteEntity.id,
     title: noteEntity.title,
     content: noteEntity.content,
-    createdAt: noteEntity.createdAt ?? DateTime.now(),
-    updatedAt: noteEntity.updatedAt ?? DateTime.now(),
+    createdAt: noteEntity.createdAt,
+    updatedAt: noteEntity.updatedAt,
   );
 
   // From Flutter to Database
@@ -50,8 +46,8 @@ class NoteModel extends NoteEntity {
       "id": id,
       "title": title,
       "content": content,
-      "created_at": createdAt?.toIso8601String(),
-      "updated_at": updatedAt?.toIso8601String(),
+      "created_at": createdAt.toIso8601String(),
+      "updated_at": updatedAt.toIso8601String(),
     };
   }
 }

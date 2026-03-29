@@ -18,6 +18,7 @@ void validateWholeNoteForm(
         id: uuid.v4(),
         title: titleController.text,
         content: contentController.text,
+        createdAt: DateTime.now(),
         updatedAt: DateTime.now(),
       ),
     );

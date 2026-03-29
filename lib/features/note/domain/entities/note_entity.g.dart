@@ -20,8 +20,8 @@ class NoteEntityAdapter extends TypeAdapter<NoteEntity> {
       id: fields[0] as String,
       title: fields[1] as String,
       content: fields[2] as String,
-      createdAt: fields[3] as DateTime?,
-      updatedAt: fields[4] as DateTime?,
+      createdAt: fields[3] as DateTime,
+      updatedAt: fields[4] as DateTime,
     );
   }
 
