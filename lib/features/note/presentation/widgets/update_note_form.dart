@@ -26,6 +26,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
 
     return Form(
       key: _formKey,
+      autovalidateMode: AutovalidateMode.onUserInteractionIfError,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [

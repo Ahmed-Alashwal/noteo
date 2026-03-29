@@ -34,6 +34,7 @@ class _CreateNoteFormState extends State<CreateNoteForm> {
         builder: (context) {
           return Form(
             key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteractionIfError,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
