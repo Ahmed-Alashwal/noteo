@@ -33,7 +33,7 @@ class NoteCardBodyRightSide extends StatelessWidget {
               backgroundColor: AppColors.bgLightRed,
               icon: const Icon(Icons.delete),
               onPressed: () {
-                showAlertDialog(context, noteId: noteEntity.id!);
+                showAlertDialog(context, noteId: noteEntity.id);
               },
             ),
           ],

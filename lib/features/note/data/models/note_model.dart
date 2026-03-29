@@ -14,6 +14,7 @@ class NoteModel extends NoteEntity {
     this.createdAt,
     this.updatedAt,
   }) : super(
+         id: id,
          title: title,
          content: content,
          createdAt: createdAt,
@@ -36,7 +37,7 @@ class NoteModel extends NoteEntity {
   }
 
   factory NoteModel.fromEntity({required NoteEntity noteEntity}) => NoteModel(
-    id: noteEntity.id!,
+    id: noteEntity.id,
     title: noteEntity.title,
     content: noteEntity.content,
     createdAt: noteEntity.createdAt ?? DateTime.now(),

@@ -15,8 +15,10 @@ void validateWholeNoteForm(
   if (formKey.currentState!.validate()) {
     context.read<CreateNoteCubit>().createNote(
       noteEntity: NoteEntity(
+        id: uuid.v4(),
         title: titleController.text,
         content: contentController.text,
+        updatedAt: DateTime.now(),
       ),
     );
     context.read<FetchAllNotesCubit>().fetchAllNotes();
