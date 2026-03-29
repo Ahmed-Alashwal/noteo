@@ -6,6 +6,7 @@ import 'package:note_app/core/utils/functions/get_text_direction.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final int? maxLines;
+  final TextStyle? textStyle;
   final String labelText;
   final String hintText;
   final bool? autofocus;
@@ -14,6 +15,7 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     super.key,
     this.maxLines = 1,
+    this.textStyle,
     this.autofocus = false,
     required this.labelText,
     required this.hintText,
@@ -35,7 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onChanged: (value) => setState(() {}),
       autofocus: widget.autofocus!,
       maxLines: widget.maxLines,
-      style: AppTextStyles.small14Regular,
+      style: widget.textStyle ?? AppTextStyles.small14Bold,
       cursorColor: AppColors.textPrimary,
       cursorErrorColor: AppColors.error,
       cursorHeight: 18,

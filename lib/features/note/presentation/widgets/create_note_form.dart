@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/service_locator.dart';
 import 'package:note_app/core/utils/functions/validators.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
@@ -38,6 +39,7 @@ class _CreateNoteFormState extends State<CreateNoteForm> {
               children: [
                 CustomTextFormField(
                   autofocus: true,
+                  textStyle: AppTextStyles.normal16Regular,
                   labelText: "Title",
                   hintText: "Title...",
                   controller: titleController,
@@ -48,6 +50,7 @@ class _CreateNoteFormState extends State<CreateNoteForm> {
                 const Gap(12),
                 CustomTextFormField(
                   maxLines: 5,
+                  textStyle: AppTextStyles.small14Regular,
                   labelText: "Content",
                   hintText: "Content...",
                   controller: contentController,

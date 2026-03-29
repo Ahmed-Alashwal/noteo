@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/validators.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
 import 'package:note_app/core/widgets/custom_text_form_field.dart';
@@ -12,6 +13,7 @@ class UpdateNoteForm extends StatefulWidget {
   @override
   State<UpdateNoteForm> createState() => _UpdateNoteFormState();
 }
+
 class _UpdateNoteFormState extends State<UpdateNoteForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController titleController = TextEditingController();
@@ -23,15 +25,16 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
     contentController.text = widget.noteEntity.content;
 
     return Form(
-      key:  _formKey,
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomTextFormField(
             autofocus: true,
+            textStyle: AppTextStyles.normal16Regular,
             labelText: "Title",
             hintText: "New title...",
-            controller:  titleController,
+            controller: titleController,
             validator: (value) {
               return noteTFFValidator(data: value);
             },
@@ -39,9 +42,10 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
           const Gap(12),
           CustomTextFormField(
             maxLines: 5,
+            textStyle: AppTextStyles.small14Regular,
             labelText: "Content",
             hintText: "New content...",
-            controller:  contentController,
+            controller: contentController,
             validator: (value) {
               return noteTFFValidator(data: value);
             },
@@ -53,9 +57,9 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
             onTap: () {
               validateWholeNoteForm(
                 context,
-                formKey:  _formKey,
-                titleController:  titleController,
-                contentController:  contentController,
+                formKey: _formKey,
+                titleController: titleController,
+                contentController: contentController,
                 noteId: widget.noteEntity.id,
                 message: "Updated",
               );
