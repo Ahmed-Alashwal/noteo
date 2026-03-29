@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/utils/functions/service_locator.dart';
 import 'package:note_app/core/utils/functions/simple_bloc_observer.dart';
@@ -62,6 +63,10 @@ class Noteo extends StatelessWidget {
       title: 'Noteo',
       theme: ThemeData(
         fontFamily: "Inria Serif",
+        textSelectionTheme: TextSelectionThemeData(
+          selectionHandleColor: AppColors.bgLightRed,
+          selectionColor: AppColors.bgLightRed,
+        ),
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: {
             TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
