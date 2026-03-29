@@ -9,17 +9,17 @@ import 'package:note_app/features/note/data/repository/note_repository_impl.dart
 import 'package:note_app/features/note/domain/usecases/create_note_use_case.dart';
 import 'package:note_app/features/note/presentation/manager/create_note_cubit/create_note_cubit.dart';
 
-class CreateNoteForm extends StatelessWidget {
-  const CreateNoteForm({
-    super.key,
-    required GlobalKey<FormState> formKey,
-    required this.titleController,
-    required this.contentController,
-  }) : _formKey = formKey;
+class CreateNoteForm extends StatefulWidget {
+  const CreateNoteForm({super.key});
 
-  final GlobalKey<FormState> _formKey;
-  final TextEditingController titleController;
-  final TextEditingController contentController;
+  @override
+  State<CreateNoteForm> createState() => _CreateNoteFormState();
+}
+
+class _CreateNoteFormState extends State<CreateNoteForm> {
+  TextEditingController titleController = TextEditingController();
+  TextEditingController contentController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
