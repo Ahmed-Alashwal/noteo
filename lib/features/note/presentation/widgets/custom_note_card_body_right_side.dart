@@ -7,9 +7,9 @@ import 'package:note_app/features/note/presentation/screens/update_note_screen.d
 import 'package:note_app/features/note/presentation/widgets/custom_icon_button.dart';
 
 class NoteCardBodyRightSide extends StatelessWidget {
-  const NoteCardBodyRightSide({super.key, required this.noteEntity});
-
   final NoteEntity noteEntity;
+
+  const NoteCardBodyRightSide({super.key, required this.noteEntity});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,8 @@ class NoteCardBodyRightSide extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const UpdateNoteScreen(),
+                    builder: (context) =>
+                        UpdateNoteScreen(noteEntity: noteEntity),
                   ),
                 );
               },

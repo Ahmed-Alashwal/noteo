@@ -13,10 +13,12 @@ class CustomNoteCardWidget extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const UpdateNoteScreen()),
+          MaterialPageRoute(
+            builder: (context) => UpdateNoteScreen(noteEntity: noteEntity),
+          ),
         );
       },
-      child:  CustomNoteCardBody(noteEntity: noteEntity),
+      child: CustomNoteCardBody(noteEntity: noteEntity),
     );
   }
 }
