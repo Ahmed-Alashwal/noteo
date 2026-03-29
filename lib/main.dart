@@ -60,7 +60,14 @@ class Noteo extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Noteo',
-      theme: ThemeData(fontFamily: "Inria Serif"),
+      theme: ThemeData(
+        fontFamily: "Inria Serif",
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
+          },
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
     );
