@@ -56,6 +56,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
                 formKey:  _formKey,
                 titleController:  titleController,
                 contentController:  contentController,
+                noteId: widget.noteEntity.id,
                 message: "Updated",
               );
             },
