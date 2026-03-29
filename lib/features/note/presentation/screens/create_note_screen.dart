@@ -8,10 +8,13 @@ class CreateNoteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.bgSecondary,
-      appBar: CustomAppBar(title: "Create Note"),
-      body: CustomCreateNoteBody(),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: const Scaffold(
+        backgroundColor: AppColors.bgSecondary,
+        appBar: CustomAppBar(title: "Create Note"),
+        body: CustomCreateNoteBody(),
+      ),
     );
   }
 }
