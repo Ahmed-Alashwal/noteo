@@ -3,17 +3,15 @@ import 'package:intl/intl.dart';
 import 'package:note_app/core/constants/colors.dart';
 
 class CustomDateTimeWidget extends StatelessWidget {
-  CustomDateTimeWidget({super.key});
-
-  final date = DateFormat('yyyy-M-dd').format(DateTime.now());
-  final time = DateFormat('h:mm a').format(DateTime.now());
+  final DateTime updatedtime;
+  const CustomDateTimeWidget({super.key, required this.updatedtime});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Text(
-        '$time | $date',
+        DateFormat('h:mm a | yyyy-M-dd').format(updatedtime),
         style: TextStyle(color: AppColors.textPrimary, fontSize: 10),
       ),
     );

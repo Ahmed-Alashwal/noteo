@@ -38,7 +38,7 @@ class NoteCardBodyRightSide extends StatelessWidget {
             ),
           ],
         ),
-        CustomDateTimeWidget(),
+        CustomDateTimeWidget(updatedtime: noteEntity.updatedAt),
       ],
     );
   }
