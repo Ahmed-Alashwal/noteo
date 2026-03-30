@@ -18,9 +18,8 @@ class NoteRepositoryImpl extends NoteRepository {
   @override
   Future<Either<Failure, List<NoteEntity>>> fetchAllNotes() async {
     try {
-      List<NoteEntity> cachedNotes = noteLocalDataSource.fetchAllNotes();
-      return right(cachedNotes);
-      // var remoteNotes = noteRemoteDataSource.fetchAllNotes();
+      List<NoteEntity> localNotes = noteLocalDataSource.fetchAllNotes();
+      return right(localNotes);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
