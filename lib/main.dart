@@ -62,8 +62,8 @@ class Noteo extends StatelessWidget {
     return MaterialApp(
       title: 'Noteo',
       theme: ThemeData(
-        fontFamily: "Inria Serif",
-        textSelectionTheme: TextSelectionThemeData(
+        fontFamily: AppString.kFontFamily,
+        textSelectionTheme: const TextSelectionThemeData(
           selectionHandleColor: AppColors.bgLightRed,
           selectionColor: AppColors.bgLightRed,
         ),
