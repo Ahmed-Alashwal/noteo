@@ -66,6 +66,22 @@ class DioConsumer extends ApiConsumer {
   }
 
   @override
+  Future<dynamic> patch({
+    required String endPoint,
+    data,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    colorPrint("Arrive to Dio consumer (PATCH) method");
+    final response = await dio.patch(
+      endPoint,
+      data: data,
+      queryParameters: queryParameters,
+    );
+    colorPrint("Go out from Dio consumer (PATCH) method");
+    return response;
+  }
+
+  @override
   Future<dynamic> delete({
     required String endPoint,
     Map<String, dynamic>? queryParameters,

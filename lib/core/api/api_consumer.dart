@@ -14,6 +14,11 @@ abstract class ApiConsumer {
     dynamic data,
     Map<String, dynamic>? queryParameters,
   });
+  Future<dynamic> patch({
+    required String endPoint,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+  });
   Future<dynamic> delete({
     required String endPoint,
     Map<String, dynamic>? queryParameters,
