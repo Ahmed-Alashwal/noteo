@@ -87,7 +87,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
               state is RegisterLoading
                   ? const CustomSpinner()
                   : CustomButton(
-                      label: AppString.kRegister,
+                      label: AppString.kRegister.toUpperCase(),
                       backgroundColor: AppColors.bgLightRed,
                       onTap: () {
                         _register(context);
@@ -103,11 +103,11 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
   void _register(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       context.read<RegisterCubit>().register(
-        userName: userNameController.text,
-        email: emailController.text,
+        userName: userNameController.text.trim().replaceAll(' ', "_"),
+        email: emailController.text.trim(),
         // email:
         //     "abc@gmail.com", // TEMP: Hardcoded email. Email auth optional for now.
-        password: passwordController.text,
+        password: passwordController.text.trim(),
       );
     } else {
       showErrorSnackBar(context, message: "${AppString.kRegister} failed!");

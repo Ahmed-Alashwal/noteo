@@ -77,7 +77,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
               state is LoginLoading
                   ? const CustomSpinner()
                   : CustomButton(
-                      label: AppString.kLogin,
+                      label: AppString.kLogin.toUpperCase(),
                       backgroundColor: AppColors.bgLightRed,
                       onTap: () {
                         _login(context);
@@ -93,8 +93,8 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
   void _login(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       context.read<LoginCubit>().login(
-        username: userNameController.text,
-        password: passwordController.text,
+        username: userNameController.text.trim().replaceAll(' ', "_"),
+        password: passwordController.text.trim(),
       );
     } else {
       showErrorSnackBar(context, message: "${AppString.kLogin} failed!");
