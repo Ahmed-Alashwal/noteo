@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:note_app/core/constants/strings.dart';
 
 class AppLogoWidget extends StatelessWidget {
   const AppLogoWidget({super.key, this.width, this.height});
@@ -10,7 +11,7 @@ class AppLogoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      "assets/icons/splash_logo.svg",
+      AppString.kNoteoLogo,
       width: width ?? 42,
       height: height ?? 42,
     );
