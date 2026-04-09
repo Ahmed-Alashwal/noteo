@@ -1,38 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/constants/text_style.dart';
-import 'package:note_app/core/utils/functions/show_snack_bar.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
-import 'package:note_app/features/note/presentation/manager/delete_note_cubit/delete_note_cubit.dart';
-import 'package:note_app/features/note/presentation/manager/fetch_all_notes_cubit/fetch_all_notes_cubit.dart';
 
 Future<dynamic> showAlertDialog(
   BuildContext context, {
-  required String noteId,
+  required final String title,
+  required IconData icon,
+  required final String description,
+  required final String confirmText,
+  required void Function()? onConfirm,
 }) {
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
         backgroundColor: AppColors.bgPrimary,
-        title: const Row(
+        title: Row(
           spacing: 8,
           children: [
-            Icon(Icons.delete, color: AppColors.bgLightRed, size: 28),
-            Text("Confirm Deletion", style: AppTextStyles.h1),
+            Icon(icon, color: AppColors.bgLightRed, size: 20),
+            Text("Confirm $title", style: AppTextStyles.h3),
           ],
         ),
-        content: const Text(
-          "Are you sure you want to delete this note? This action cannot be undone.",
-          style: AppTextStyles.normal16Regular,
-        ),
+        content: Text(description, style: AppTextStyles.small12Bold),
         actions: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CustomButton(
-                label: "Cancel",
+                label: AppString.kCancel,
                 backgroundColor: AppColors.bgSecondary,
                 onTap: () {
                   Feedback.forTap(context); // Triggers sound/vibration
@@ -40,18 +38,9 @@ Future<dynamic> showAlertDialog(
                 },
               ),
               CustomButton(
-                label: "Deletion",
+                label: confirmText,
                 backgroundColor: AppColors.error,
-                onTap: () {
-                  Feedback.forTap(context); // Triggers sound/vibration
-                  context.read<DeleteNoteCubit>().deleteNote(noteId: noteId);
-                  context.read<FetchAllNotesCubit>().fetchAllNotes();
-                  showSucessSnackBar(
-                    context,
-                    message: "Note deleted successfully",
-                  );
-                  Navigator.pop(context);
-                },
+                onTap: onConfirm,
               ),
             ],
           ),
