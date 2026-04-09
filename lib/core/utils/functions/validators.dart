@@ -68,7 +68,7 @@ void validateWholeNoteForm(
       );
     }
     context.read<FetchAllNotesCubit>().fetchAllNotes();
-    showSucessSnackBar(context, message: "Note $message successfully.");
+    showSuccessSnackBar(context, message: "Note $message successfully.");
     titleController.clear();
     contentController.clear();
     Navigator.pop(context);
