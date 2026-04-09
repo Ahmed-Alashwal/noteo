@@ -13,7 +13,9 @@ abstract class AppString {
   static const String kRegister = "Register";
   static const String kLogout = "Logout";
   static const String kAbout = "About";
-  static const String kProfile = "Profile";
   static const String kNoteBox = "noteBox";
+  static const String kCreate = "Create";
+  static const String kUpdate = "Update";
+  static const String kProfile = "Profile";
   static const String kCancel = "Cancel";
 }
