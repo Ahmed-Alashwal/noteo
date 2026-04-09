@@ -34,6 +34,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^9.1.1
+  flutter_secure_storage: ^10.0.0
   flutter_svg: ^2.2.4
   gap: ^3.0.1
   get_it: ^9.2.1
@@ -78,18 +79,16 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  
   fonts:
-  - family: Merriweather
-    fonts:
-      - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
-        weight: 400
-      - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
-        weight: 300
-        style: italic
-
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/to/font-from-package
+    - family: Merriweather
+      fonts:
+        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+          weight: 300
+          style: italic
+    # For details regarding fonts from package dependencies,
+    # see https://flutter.dev/to/font-from-package
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
