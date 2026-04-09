@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:note_app/core/api/api_endpoints.dart';
-import 'package:note_app/core/utils/functions/color_print.dart';
 import 'package:note_app/core/utils/functions/service_locator.dart';
 
 class CustomInterceptor implements Interceptor {
@@ -10,7 +9,6 @@ class CustomInterceptor implements Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    colorPrint("🔵 Interceptor triggered for: ${options.path}");
     List<String> publicEndpoints = [ApiEndpoints.register, ApiEndpoints.login];
 
     bool isPublic = publicEndpoints.any(
@@ -23,10 +21,9 @@ class CustomInterceptor implements Interceptor {
         key: ApiKey.accessToken,
       );
       if (accessToken != null) {
-        options.headers[ApiKey.authorization] = accessToken;
+        options.headers[ApiKey.authorization] = "Bearer $accessToken";
       }
     }
-    colorPrint("🟢 Calling handler.next for: ${options.path}");
     return handler.next(options);
   }
 
