@@ -32,7 +32,7 @@ void main() async {
             fetchAllNotesUseCase: FetchAllNotesUseCase(
               noteRepository: di.get<NoteRepositoryImpl>(),
             ),
-          )..fetchAllNotes(),
+          ),
         ),
         BlocProvider(
           create: (context) => UpdateNoteCubit(
