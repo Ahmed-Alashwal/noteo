@@ -22,14 +22,14 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: AppSizes.pAll12,
-        width: 96,
+        // width: 96,
         decoration: BoxDecoration(
           color: backgroundColor ?? AppColors.bgPrimary,
           borderRadius: AppSizes.r8,
           boxShadow: hasShadow == false
               ? null
               : [
-                  BoxShadow(
+                  const BoxShadow(
                     color: AppColors.bgWhite,
                     blurRadius: 12,
                     offset: Offset(2, 2),
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
                   ),
                 ],
         ),
-        child: Center(child: Text(label, style: AppTextStyles.small14Bold)),
+        child: Center(child: Text(label, style: AppTextStyles.small12Regular)),
       ),
     );
   }
