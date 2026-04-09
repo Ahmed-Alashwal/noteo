@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:note_app/core/errors/error_model.dart';
+import 'package:note_app/core/utils/functions/color_print.dart';
 
 abstract class Failure {
   final String errMessage;
@@ -17,50 +19,29 @@ class NetworkFailure extends Failure {
 class ServerFailure extends Failure {
   ServerFailure({required super.errMessage});
 
-  factory ServerFailure.fromDioError(DioException e) {
+  factory ServerFailure.fromDioException(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
-        return ServerFailure(errMessage: "Connection Timeout");
+        throw ServerFailure(errMessage: "Connection Timeout");
       case DioExceptionType.sendTimeout:
-        return ServerFailure(errMessage: "Send timeout  with ApiServer");
+        throw ServerFailure(errMessage: "Send timeout  with ApiServer");
       case DioExceptionType.receiveTimeout:
-        return ServerFailure(errMessage: "Receive timeout with ApiServer");
+        throw ServerFailure(errMessage: "Receive timeout with ApiServer");
       case DioExceptionType.badCertificate:
-        return ServerFailure(errMessage: "Bad certificate with ApiServer");
-      case DioExceptionType.badResponse:
-        return ServerFailure.fromResponse(
-          statusCode: e.response!.statusCode!,
-          response: e.response!.data,
-        );
+        throw ServerFailure(errMessage: "Bad certificate with ApiServer");
       case DioExceptionType.cancel:
-        return ServerFailure(errMessage: "Request to ApiServer was canceld");
+        throw ServerFailure(errMessage: "Request to ApiServer was canceld");
       case DioExceptionType.connectionError:
-        return ServerFailure(errMessage: "No internet connection.");
+        throw ServerFailure(errMessage: "No internet connection.");
       case DioExceptionType.unknown:
-        return ServerFailure(
+        throw ServerFailure(
           errMessage: "Unknown: Oops! there was an error, please try later.",
         );
-    }
-  }
-
-  factory ServerFailure.fromResponse({
-    required int statusCode,
-    required dynamic response,
-  }) {
-    if (statusCode == 404) {
-      return ServerFailure(
-        errMessage: "Your request wasn't found, please try later",
-      );
-    } else if (statusCode == 500) {
-      return ServerFailure(
-        errMessage: "There's a problem with server, please try later",
-      );
-    } else {
-      // Will be modified in the future!
-      // For statusCode in [ 401, 403, etc. ]
-      return ServerFailure(
-        errMessage: "BadResponse: Oops! there was an error, please try later.",
-      );
+      case DioExceptionType.badResponse:
+        colorPrint("Get into [DioExceptionType.badResponse]");
+        throw ServerFailure(
+          errMessage: ErrorModel.fromJson(e.response!.data).errMessage,
+        );
     }
   }
 }
