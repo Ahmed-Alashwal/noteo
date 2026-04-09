@@ -12,7 +12,7 @@ class CustomDateTimeWidget extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8),
       child: Text(
         DateFormat('h:mm a | yyyy-M-dd').format(updatedtime),
-        style: TextStyle(color: AppColors.textPrimary, fontSize: 10),
+        style: const TextStyle(color: AppColors.textPrimary, fontSize: 10),
       ),
     );
   }
