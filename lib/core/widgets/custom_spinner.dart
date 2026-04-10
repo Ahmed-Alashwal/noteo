@@ -16,7 +16,7 @@ class CustomSpinner extends StatelessWidget {
           const CircularProgressIndicator(
             color: AppColors.bgLightRed,
             backgroundColor: AppColors.bgDarkRed,
-            strokeWidth: 2,
+            strokeWidth: 1.5,
           ),
           const Gap(12),
           Text(title ?? "", style: AppTextStyles.verySmall10Regular),
