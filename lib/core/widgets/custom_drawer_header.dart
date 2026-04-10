@@ -45,9 +45,9 @@ class CustomDrawerHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Osama Elzero", style: AppTextStyles.normal14Bold),
+                Text("Note Taker", style: AppTextStyles.normal14Bold),
                 Text(
-                  "osama_elzero@gmail.com",
+                  "noteo@gmail.com",
                   style: AppTextStyles.verySmall10Regular,
                 ),
                 Gap(8),

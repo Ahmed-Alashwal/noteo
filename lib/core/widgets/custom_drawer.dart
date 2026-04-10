@@ -10,14 +10,17 @@ import 'package:note_app/core/utils/functions/show_alert_dialog.dart';
 import 'package:note_app/core/widgets/custom_drawer_header.dart';
 import 'package:note_app/core/widgets/custom_list_tile.dart';
 import 'package:note_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:note_app/features/auth/presentation/screens/profile_screen.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
 
-  final List<String> linksTitles = const ["Profile", "About", "Logout"];
+  final List<String> linksTitles = const [
+    // AppString.kProfile,
+    AppString.kAbout,
+    AppString.kLogout,
+  ];
   final List<IconData> linksIcons = const [
-    Icons.person,
+    // Icons.person,
     Icons.info,
     Icons.logout_rounded,
   ];
@@ -33,15 +36,12 @@ class CustomDrawer extends StatelessWidget {
             child: Padding(
               padding: AppSizes.pV12,
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: linksTitles.length,
                 itemBuilder: (context, index) {
                   return CustomListTile(
                     title: linksTitles[index],
                     icon: linksIcons[index],
                     onTap: () {
-                      if (linksTitles[index] == AppString.kProfile) {
-                        _goToProfileScreen(context);
-                      }
                       if (linksTitles[index] == AppString.kAbout) {
                         _goToAboutScreen(context);
                       }
@@ -62,7 +62,7 @@ class CustomDrawer extends StatelessWidget {
   Future<dynamic> _logout(BuildContext context) {
     return showAlertDialog(
       context,
-      title: AppString.kLogout.toUpperCase(),
+      title: AppString.kLogout,
       icon: Icons.logout,
       description:
           "Are you sure you want to logout from ${AppString.kAppName}?",
@@ -82,13 +82,6 @@ class CustomDrawer extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const AboutScreen()),
-    );
-  }
-
-  void _goToProfileScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const ProfileScreen()),
     );
   }
 }
