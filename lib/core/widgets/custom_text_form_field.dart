@@ -7,20 +7,24 @@ import 'package:note_app/core/utils/functions/get_text_direction.dart';
 class CustomTextFormField extends StatefulWidget {
   final int? maxLines;
   final TextStyle? textStyle;
-  final String labelText;
+  final String? labelText;
   final String hintText;
+  final bool? isObscureText;
+  final Widget? icon;
   final bool? autofocus;
   final TextEditingController controller;
-  final String? Function(String?)? validator;
+  final String? Function(String input) validator;
   const CustomTextFormField({
     super.key,
     this.maxLines = 1,
     this.textStyle,
     this.autofocus = false,
-    required this.labelText,
+    this.labelText,
     required this.hintText,
+    this.isObscureText,
+    this.icon,
     required this.controller,
-    this.validator,
+    required this.validator,
   });
 
   @override
@@ -31,13 +35,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.isObscureText ?? false,
       controller: widget.controller,
-      validator: widget.validator,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return "This field is required, you must fill it!";
+        } else {
+          return widget.validator(value);
+        }
+      },
       textDirection: getTextDirection(text: widget.controller.text),
       onChanged: (value) => setState(() {}),
       autofocus: widget.autofocus!,
       maxLines: widget.maxLines,
-      style: widget.textStyle ?? AppTextStyles.small14Bold,
+      style: widget.textStyle ?? AppTextStyles.small12Bold,
       cursorColor: AppColors.textPrimary,
       cursorErrorColor: AppColors.error,
       cursorHeight: 18,
@@ -45,20 +56,28 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       cursorOpacityAnimates: true,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: AppTextStyles.small14Regular,
+        hintStyle: AppTextStyles.small12Regular,
         labelText: widget.labelText,
-        labelStyle: AppTextStyles.small14Bold,
+        labelStyle: AppTextStyles.small12Bold,
+        suffixIcon: widget.icon,
+        suffixIconColor: AppColors.textPrimary,
+        errorStyle: const TextStyle(
+          color: AppColors.error,
+          fontSize: 8.5,
+          fontWeight: FontWeight.w300,
+        ),
         alignLabelWithHint: true,
+        errorMaxLines: 3,
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.bgWhite),
+          borderSide: const BorderSide(color: AppColors.bgWhite),
           borderRadius: AppSizes.r8,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.bgWhite),
+          borderSide: const BorderSide(color: AppColors.bgWhite),
           borderRadius: AppSizes.r8,
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.error),
+          borderSide: const BorderSide(color: AppColors.error),
           borderRadius: AppSizes.r8,
         ),
       ),
