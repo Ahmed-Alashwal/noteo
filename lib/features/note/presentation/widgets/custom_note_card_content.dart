@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/constants/sizes.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_note_card_body_center_side.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_note_card_body_right_side.dart';
@@ -26,8 +27,8 @@ class CustomNoteCardBody extends StatelessWidget {
             Expanded(
               child: Row(
                 children: [
-                  SvgPicture.asset("assets/icons/happy_circle.svg"),
-                  SizedBox(width: 24),
+                  SvgPicture.asset(AppString.kHappyCircle),
+                  const SizedBox(width: 24),
                   NoteCardBodyCenterSide(noteEntity: noteEntity),
                 ],
               ),
