@@ -16,7 +16,7 @@ class FetchAllNotesCubit extends Cubit<FetchAllNotesState> {
     var result = await fetchAllNotesUseCase.call();
 
     result.fold(
-      (failure) => emit(FetchAllNotesFailure(errMessage: "Error while fetch your notes!")),
+      (failure) => emit(FetchAllNotesFailure(errMessage: failure.errMessage)),
       (notesList) => emit(FetchAllNotesSuccess(notes: notesList)),
     );
   }

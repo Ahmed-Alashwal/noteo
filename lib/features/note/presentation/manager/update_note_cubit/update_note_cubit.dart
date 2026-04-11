@@ -15,7 +15,7 @@ class UpdateNoteCubit extends Cubit<UpdateNoteState> {
 
     var result = await updateNoteUseCase.call(updatedNoteEntity);
     result.fold(
-      (failure) => emit(UpdateNoteFailure(errMessage: "Error while update a note!")),
+      (failure) => emit(UpdateNoteFailure(errMessage: failure.errMessage)),
       (success) => emit(UpdateNoteSuccess()),
     );
   }

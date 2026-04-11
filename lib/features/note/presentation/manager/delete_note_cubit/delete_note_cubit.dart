@@ -16,7 +16,7 @@ class DeleteNoteCubit extends Cubit<DeleteNoteState> {
 
     result.fold(
       (failure) =>
-          emit(DeleteNoteFailure(errMessage: "Error while delete a note!")),
+          emit(DeleteNoteFailure(errMessage: failure.errMessage)),
       (success) => emit(DeleteNoteSuccess()),
     );
   }
