@@ -22,7 +22,7 @@ class NoteCardBodyCenterSide extends StatelessWidget {
           ),
           Text(
             noteEntity.content,
-            style: AppTextStyles.small14Regular,
+            style: AppTextStyles.small12Regular,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
