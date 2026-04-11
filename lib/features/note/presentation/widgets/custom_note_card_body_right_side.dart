@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/core/constants/colors.dart';
 import 'package:note_app/core/utils/functions/show_alert_dialog.dart';
 import 'package:note_app/core/widgets/custom_date_time_widget.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
+import 'package:note_app/features/note/presentation/manager/delete_note_cubit/delete_note_cubit.dart';
 import 'package:note_app/features/note/presentation/screens/update_note_screen.dart';
 import 'package:note_app/features/note/presentation/widgets/custom_icon_button.dart';
 
@@ -34,13 +36,29 @@ class NoteCardBodyRightSide extends StatelessWidget {
               backgroundColor: AppColors.bgLightRed,
               icon: const Icon(Icons.delete),
               onPressed: () {
-                showAlertDialog(context, noteId: noteEntity.id);
+                showAlertDeleteNoteDialog(context);
               },
             ),
           ],
         ),
         CustomDateTimeWidget(updatedtime: noteEntity.updatedAt),
       ],
+    );
+  }
+
+  Future<dynamic> showAlertDeleteNoteDialog(BuildContext context) {
+    return showAlertDialog(
+      context,
+      title: "Deletion",
+      icon: Icons.delete,
+      description:
+          "Are you sure you want to delete this note? This action cannot be undone.",
+      confirmText: "Deletion",
+      onConfirm: () {
+        Feedback.forTap(context); // Triggers sound/vibration
+        context.read<DeleteNoteCubit>().deleteNote(noteId: noteEntity.id);
+        Navigator.pop(context);
+      },
     );
   }
 }
