@@ -1,55 +1,51 @@
-import 'package:note_app/core/constants/strings.dart';
-import 'package:note_app/core/utils/functions/api_service.dart';
-import 'package:note_app/core/utils/functions/save_notes_locally.dart';
+import 'package:note_app/core/api/api_consumer.dart';
+import 'package:note_app/core/api/api_endpoints.dart';
 import 'package:note_app/features/note/data/models/note_model.dart';
 import 'package:note_app/features/note/domain/entities/note_entity.dart';
 
 abstract class NoteRemoteDataSource {
-  Future<List<NoteEntity>> fetchAllNotes();
-  Future<void> createNote({required NoteEntity noteEntity});
-  Future<void> updateNote({required NoteEntity updatedNoteEntity});
-  Future<void> deleteNote({required String noteId});
+  Future<dynamic> fetchAllNotes();
+  Future<dynamic> createNote({required NoteEntity noteEntity});
+  Future<dynamic> updateNote({required NoteEntity updatedNoteEntity});
+  Future<dynamic> deleteNote({required String noteId});
 }
 
 class NoteRemoteDataSourceImpl extends NoteRemoteDataSource {
-  final ApiService apiService;
+  final ApiConsumer apiConsumer;
 
-  NoteRemoteDataSourceImpl({required this.apiService});
+  NoteRemoteDataSourceImpl({required this.apiConsumer});
 
-  List<NoteEntity> getNoteList(Map<String, dynamic> data) {
-    List<NoteEntity> notes = [];
-    for (var note in data as List) {
-      notes.add(NoteModel.fromJson(note));
-    }
-    return notes;
+  @override
+  Future<dynamic> fetchAllNotes() async {
+    return await apiConsumer.get(endPoint: ApiEndpoints.notes());
   }
 
   @override
-  Future<List<NoteEntity>> fetchAllNotes() async {
-    var data = await apiService.get(endPoint: "notes");
-    List<NoteEntity> notes = getNoteList(data);
-    saveNotesLocally(notes: notes, notesBox: AppString.kNoteBox);
-    return notes;
-  }
-
-  @override
-  Future<void> createNote({required NoteEntity noteEntity}) async {
-    await apiService.post(
-      endPoint: "notes",
-      body: NoteModel.fromEntity(noteEntity: noteEntity).toJson(),
+  Future<dynamic> createNote({required NoteEntity noteEntity}) async {
+    return await apiConsumer.post(
+      endPoint: ApiEndpoints.notes(),
+      data: NoteModel.fromEntity(noteEntity: noteEntity).toJson(),
     );
   }
 
   @override
-  Future<void> updateNote({required NoteEntity updatedNoteEntity}) async {
-    await apiService.put(
-      endPoint: 'notes/${updatedNoteEntity.id}',
-      body: NoteModel.fromEntity(noteEntity: updatedNoteEntity).toJson(),
+  Future<dynamic> updateNote({required NoteEntity updatedNoteEntity}) async {
+    Map<String, dynamic> note = NoteModel.fromEntity(
+      noteEntity: updatedNoteEntity,
+    ).toJson();
+    return await apiConsumer.patch(
+      endPoint: ApiEndpoints.notes(noteId: note[ApiKey.id]),
+      data: {
+        ApiKey.noteTitle: note[ApiKey.noteTitle],
+        ApiKey.noteContent: note[ApiKey.noteContent],
+      },
     );
   }
 
   @override
-  Future<void> deleteNote({required String noteId}) async {
-    await apiService.delete(endPoint: "notes", id: noteId);
+  Future<dynamic> deleteNote({required String noteId}) async {
+    return await apiConsumer.delete(
+      endPoint: ApiEndpoints.notes(noteId: noteId),
+    );
   }
 }
