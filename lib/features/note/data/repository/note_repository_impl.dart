@@ -20,7 +20,7 @@ class NoteRepositoryImpl extends NoteRepository {
   Future<Either<Failure, List<NoteEntity>>> fetchAllNotes() async {
     try {
       // List<NoteEntity> localNotes = noteLocalDataSource.fetchAllNotes();
-      Response response = await noteRemoteDataSource.fetchAllNotes();
+      final response = await noteRemoteDataSource.fetchAllNotes();
       List<NoteEntity> remoteNotes = [];
       for (var note in response.data) {
         remoteNotes.add(NoteModel.fromJson(note));
@@ -29,7 +29,12 @@ class NoteRepositoryImpl extends NoteRepository {
     } on DioException catch (e) {
       return left(ServerFailure(errMessage: e.toString()));
     } catch (e) {
-      return left(ServerFailure(errMessage: "[LOCAL-DB]:Error reading notes!"));
+      return left(
+        ServerFailure(
+          errMessage:
+              "[Unexpected error]:Oops! there's an error, please try later!",
+        ),
+      );
     }
   }
 
@@ -44,7 +49,12 @@ class NoteRepositoryImpl extends NoteRepository {
     } on DioException catch (e) {
       return left(ServerFailure(errMessage: e.toString()));
     } catch (e) {
-      return left(ServerFailure(errMessage: "[LOCAL-DB]:Error writing notes!"));
+      return left(
+        ServerFailure(
+          errMessage:
+              "[Unexpected error]:Oops! there's an error, please try later!",
+        ),
+      );
     }
   }
 
@@ -65,7 +75,10 @@ class NoteRepositoryImpl extends NoteRepository {
       return left(ServerFailure(errMessage: e.toString()));
     } catch (e) {
       return left(
-        ServerFailure(errMessage: "[LOCAL-DB]:Error updating notes!"),
+        ServerFailure(
+          errMessage:
+              "[Unexpected error]:Oops! there's an error, please try later!",
+        ),
       );
     }
   }
@@ -81,7 +94,10 @@ class NoteRepositoryImpl extends NoteRepository {
       return left(ServerFailure(errMessage: e.toString()));
     } catch (e) {
       return left(
-        ServerFailure(errMessage: "[LOCAL-DB]:Error deleting notes!"),
+        ServerFailure(
+          errMessage:
+              "[Unexpected error]:Oops! there's an error, please try later!",
+        ),
       );
     }
   }
