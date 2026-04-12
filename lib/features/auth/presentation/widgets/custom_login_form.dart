@@ -45,7 +45,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
             showErrorSnackBar(context, message: state.errMessage);
           }
           if (state is LoginSuccess) {
-            showSucessSnackBar(
+            showSuccessSnackBar(
               context,
               message: "${AppString.kLogin} success.",
             );

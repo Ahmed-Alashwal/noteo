@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           context
               .read<FetchAllNotesCubit>()
               .fetchAllNotes(); // triggered after success
-          showSucessSnackBar(context, message: "Note deleted successfully");
+          showSuccessSnackBar(context, message: "Note deleted successfully");
         }
         if (state is DeleteNoteFailure) {
           showErrorSnackBar(context, message: state.errMessage);

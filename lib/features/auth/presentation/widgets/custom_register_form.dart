@@ -48,7 +48,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
           showErrorSnackBar(context, message: state.errMessage);
         }
         if (state is RegisterSuccess) {
-          showSucessSnackBar(
+          showSuccessSnackBar(
             context,
             message: "${AppString.kRegister} success.",
           );

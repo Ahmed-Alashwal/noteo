@@ -40,22 +40,22 @@ class _CreateNoteFormState extends State<CreateNoteForm> {
               children: [
                 CustomTextFormField(
                   autofocus: true,
-                  textStyle: AppTextStyles.normal16Regular,
+                  textStyle: AppTextStyles.normal14Bold,
                   labelText: "Title",
                   hintText: "Title...",
                   controller: titleController,
                   validator: (value) {
-                    return noteTFFValidator(data: value);
+                    return noteTFFValidator(value);
                   },
                 ),
                 const Gap(12),
                 CustomTextFormField(
                   maxLines: 5,
-                  textStyle: AppTextStyles.small14Regular,
+                  textStyle: AppTextStyles.normal14Regular,
                   labelText: "Content",
                   hintText: "Content...",
                   controller: contentController,
-                  validator: (value) => noteTFFValidator(data: value),
+                  validator: (value) => noteTFFValidator(value),
                 ),
                 const Gap(24),
                 CustomButton(

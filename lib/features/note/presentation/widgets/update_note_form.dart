@@ -32,23 +32,23 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
         children: [
           CustomTextFormField(
             autofocus: true,
-            textStyle: AppTextStyles.normal16Regular,
+            textStyle: AppTextStyles.normal14Bold,
             labelText: "Title",
             hintText: "New title...",
             controller: titleController,
             validator: (value) {
-              return noteTFFValidator(data: value);
+              return noteTFFValidator(value);
             },
           ),
           const Gap(12),
           CustomTextFormField(
             maxLines: 5,
-            textStyle: AppTextStyles.small14Regular,
+            textStyle: AppTextStyles.normal14Regular,
             labelText: "Content",
             hintText: "New content...",
             controller: contentController,
             validator: (value) {
-              return noteTFFValidator(data: value);
+              return noteTFFValidator(value);
             },
           ),
           const Gap(24),
