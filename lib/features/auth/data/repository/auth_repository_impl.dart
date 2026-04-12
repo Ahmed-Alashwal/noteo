@@ -34,7 +34,7 @@ class AuthRepositoryImpl extends AuthRepository {
       return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(
-        ServerFailure(errMessage: "auth_repo_impl ---> register() line 'X'"),
+        UnexpectedFailure(errMessage: "[UnexpectedFailure]: auth_repo_impl ---> register() line 'X'"),
       );
     }
   }
@@ -64,7 +64,7 @@ class AuthRepositoryImpl extends AuthRepository {
       return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(
-        ServerFailure(errMessage: "auth_repo_impl ---> login() line 'X'"),
+        UnexpectedFailure(errMessage: "[UnexpectedFailure]: auth_repo_impl ---> login() line 'X'"),
       );
     }
   }
