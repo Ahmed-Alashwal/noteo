@@ -15,16 +15,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     required String email,
     required String password,
   }) async {
-    try {
-      emit(RegisterLoading());
+    emit(RegisterLoading());
 
-      final response = await registerUseCase.call(
-        RegisterParams(userName: userName, email: email, password: password),
-      );
+    final result = await registerUseCase.call(
+      RegisterParams(userName: userName, email: email, password: password),
+    );
 
-      emit(RegisterSuccess());
-    } on ServerFailure catch (e) {
-      emit(RegisterFailure(errMessage: e.errMessage));
-    }
+    result.fold(
+      (failure) => emit(RegisterFailure(errMessage: failure.errMessage)),
+      (success) => emit(RegisterSuccess()),
+    );
   }
 }
