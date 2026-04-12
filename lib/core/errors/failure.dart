@@ -26,24 +26,24 @@ class ServerFailure extends Failure {
   factory ServerFailure.fromDioException(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
-        throw ServerFailure(errMessage: "Connection Timeout");
+        return ServerFailure(errMessage: "Connection Timeout");
       case DioExceptionType.sendTimeout:
-        throw ServerFailure(errMessage: "Send timeout  with ApiServer");
+        return ServerFailure(errMessage: "Send timeout  with ApiServer");
       case DioExceptionType.receiveTimeout:
-        throw ServerFailure(errMessage: "Receive timeout with ApiServer");
+        return ServerFailure(errMessage: "Receive timeout with ApiServer");
       case DioExceptionType.badCertificate:
-        throw ServerFailure(errMessage: "Bad certificate with ApiServer");
+        return ServerFailure(errMessage: "Bad certificate with ApiServer");
       case DioExceptionType.cancel:
-        throw ServerFailure(errMessage: "Request to ApiServer was canceld");
+        return ServerFailure(errMessage: "Request to ApiServer was canceld");
       case DioExceptionType.connectionError:
-        throw ServerFailure(errMessage: "No internet connection.");
+        return ServerFailure(errMessage: "No internet connection.");
       case DioExceptionType.unknown:
-        throw ServerFailure(
+        return ServerFailure(
           errMessage: "Unknown: Oops! there was an error, please try later.",
         );
       case DioExceptionType.badResponse:
         colorPrint("Get into [DioExceptionType.badResponse]");
-        throw ServerFailure(
+        return ServerFailure(
           errMessage: ErrorModel.fromJson(e.response!.data).errMessage,
         );
     }
