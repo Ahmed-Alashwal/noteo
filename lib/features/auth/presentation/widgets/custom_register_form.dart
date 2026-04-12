@@ -15,7 +15,7 @@ import 'package:note_app/core/widgets/custom_spinner.dart';
 import 'package:note_app/core/widgets/custom_text_form_field.dart';
 import 'package:note_app/features/auth/presentation/manager/register_cubit/register_cubit.dart';
 import 'package:note_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:note_app/features/auth/presentation/widgets/custom_auth_navigation_link.dart';
+import 'package:note_app/features/auth/presentation/widgets/custom_navigation_link.dart';
 
 class CustomRegisterForm extends StatefulWidget {
   const CustomRegisterForm({super.key});
@@ -78,7 +78,7 @@ class _CustomRegisterFormState extends State<CustomRegisterForm> {
                 controller: confirmPasswordController,
                 passwordController: passwordController,
               ),
-              const CustomAuthNavigationLink(
+              const CustomNavigationLink(
                 destination: LoginScreen(),
                 text: "Do you already have an account?  ",
                 hyperLinkText: AppString.kLogin,

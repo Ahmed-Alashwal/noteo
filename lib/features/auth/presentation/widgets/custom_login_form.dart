@@ -13,7 +13,7 @@ import 'package:note_app/core/widgets/custom_spinner.dart';
 import 'package:note_app/core/widgets/custom_text_form_field.dart';
 import 'package:note_app/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:note_app/features/auth/presentation/screens/register_screen.dart';
-import 'package:note_app/features/auth/presentation/widgets/custom_auth_navigation_link.dart';
+import 'package:note_app/features/auth/presentation/widgets/custom_navigation_link.dart';
 import 'package:note_app/features/note/presentation/screens/home_screen.dart';
 
 class CustomLoginForm extends StatefulWidget {
@@ -68,7 +68,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
                 validator: validateUsername,
               ),
               CustomPasswordField(controller: passwordController),
-              const CustomAuthNavigationLink(
+              const CustomNavigationLink(
                 destination: RegisterScreen(),
                 text: "Don't have an account?  ",
                 hyperLinkText: AppString.kRegister,
