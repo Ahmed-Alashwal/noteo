@@ -1,7 +1,7 @@
 class ApiEndpoints {
   static String baseUrl = "https://yemenideveloper.pythonanywhere.com/api/";
-  static String register = "auth/register/";
-  static String login = "auth/token/";
+  static String register = "accounts/register/";
+  static String login = "accounts/token/";
   // If noteId equal to null, that means this endpoint will be used
   // for either fetch or create notes, otherwise for update or delete
   // a note.
