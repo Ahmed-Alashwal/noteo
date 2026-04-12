@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:note_app/core/constants/colors.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/features/note/presentation/screens/create_note_screen.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
@@ -9,7 +10,7 @@ class CustomFloatingActionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         boxShadow: [
           BoxShadow(
             color: AppColors.bgWhite,
@@ -29,7 +30,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         elevation: 0,
         backgroundColor: AppColors.bgPrimary,
         splashColor: AppColors.bgPrimary,
-        child: SvgPicture.asset("assets/icons/pen.svg", width: 20, height: 20),
+        child: SvgPicture.asset(AppString.kPen, width: 20, height: 20),
       ),
     );
   }
