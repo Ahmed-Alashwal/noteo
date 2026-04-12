@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/service_locator.dart';
 import 'package:note_app/core/utils/functions/validators.dart';
@@ -67,7 +68,7 @@ class _CreateNoteFormState extends State<CreateNoteForm> {
                       formKey: _formKey,
                       titleController: titleController,
                       contentController: contentController,
-                      message: "Created",
+                      message: AppString.kCreate,
                     );
                   },
                 ),

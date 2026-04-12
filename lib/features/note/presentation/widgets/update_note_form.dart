@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:note_app/core/constants/strings.dart';
 import 'package:note_app/core/constants/text_style.dart';
 import 'package:note_app/core/utils/functions/validators.dart';
 import 'package:note_app/core/widgets/custom_button.dart';
@@ -53,7 +54,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
           ),
           const Gap(24),
           CustomButton(
-            label: "Update",
+            label: AppString.kUpdate,
             hasShadow: true,
             onTap: () {
               validateWholeNoteForm(
@@ -62,7 +63,7 @@ class _UpdateNoteFormState extends State<UpdateNoteForm> {
                 titleController: titleController,
                 contentController: contentController,
                 noteId: widget.noteEntity.id,
-                message: "Updated",
+                message: AppString.kUpdate,
               );
             },
           ),
