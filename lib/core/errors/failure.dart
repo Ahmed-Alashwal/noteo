@@ -8,6 +8,10 @@ abstract class Failure {
   Failure({required this.errMessage});
 }
 
+class UnexpectedFailure extends Failure {
+  UnexpectedFailure({required super.errMessage});
+}
+
 class CacheFailure extends Failure {
   CacheFailure({required super.errMessage});
 }
