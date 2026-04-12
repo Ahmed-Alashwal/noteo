@@ -13,16 +13,15 @@ class LoginCubit extends Cubit<LoginState> {
     required String username,
     required String password,
   }) async {
-    try {
-      emit(LoginLoading());
+    emit(LoginLoading());
 
-      final response = await authLoginUseCase.call(
-        LoginParams(userName: username, password: password),
-      );
+    final result = await authLoginUseCase.call(
+      LoginParams(userName: username, password: password),
+    );
 
-      emit(LoginSuccess());
-    } on ServerFailure catch (e) {
-      emit(LoginFailure(errMessage: e.errMessage));
-    }
+    result.fold(
+      (failure) => emit(LoginFailure(errMessage: failure.errMessage)),
+      (success) => emit(LoginSuccess()),
+    );
   }
 }
