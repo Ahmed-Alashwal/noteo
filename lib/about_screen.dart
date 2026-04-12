@@ -9,7 +9,6 @@ import 'package:note_app/core/widgets/custom_app_bar.dart';
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
-  // 👇 Add your real links here
   static const _linkedin =
       'https://www.linkedin.com/in/ahmed-al-ashwal-586a01398';
   static const _github = 'https://github.com/Ahmed-Alashwal';
@@ -141,7 +140,7 @@ class AboutScreen extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.bgPrimary,
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.bgDarkRed.withAlpha(175)),
+          border: Border.all(color: AppColors.bgLightRed.withAlpha(175)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -150,10 +149,7 @@ class AboutScreen extends StatelessWidget {
             const SizedBox(height: 6),
             Text(
               label,
-              style: const TextStyle(
-                color: AppColors.textSecondary,
-                fontSize: 8,
-              ),
+              style: const TextStyle(color: AppColors.textPrimary, fontSize: 8),
             ),
           ],
         ),
@@ -168,7 +164,7 @@ class AboutScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.bgPrimary,
         borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: AppColors.bgDarkRed.withAlpha(175)),
+        border: Border.all(color: AppColors.bgLightRed.withAlpha(175)),
       ),
       child: Row(
         children: [
