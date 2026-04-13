@@ -28,7 +28,7 @@ class NoteRepositoryImpl extends NoteRepository {
       return right(localNotes);
     }
     // on DioException catch (e) {
-    //   return left(ServerFailure(errMessage: e.toString()));
+    // return left(ServerFailure.fromDioException(e));    
     // }
     catch (e) {
       return left(
@@ -49,7 +49,7 @@ class NoteRepositoryImpl extends NoteRepository {
       await noteRemoteDataSource.createNote(noteEntity: noteEntity);
       return right(null);
     } on DioException catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(
         UnexpectedFailure(
@@ -74,7 +74,7 @@ class NoteRepositoryImpl extends NoteRepository {
 
       return right(null);
     } on DioException catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(
         UnexpectedFailure(
@@ -92,7 +92,7 @@ class NoteRepositoryImpl extends NoteRepository {
       await noteRemoteDataSource.deleteNote(noteId: noteId);
       return right(null);
     } on DioException catch (e) {
-      return left(ServerFailure(errMessage: e.toString()));
+      return left(ServerFailure.fromDioException(e));
     } catch (e) {
       return left(
         UnexpectedFailure(

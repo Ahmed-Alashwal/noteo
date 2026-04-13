@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:note_app/core/errors/error_model.dart';
-import 'package:note_app/core/utils/functions/color_print.dart';
 
 abstract class Failure {
   final String errMessage;
@@ -42,10 +41,25 @@ class ServerFailure extends Failure {
           errMessage: "Unknown: Oops! there was an error, please try later.",
         );
       case DioExceptionType.badResponse:
-        colorPrint("Get into [DioExceptionType.badResponse]");
-        return ServerFailure(
-          errMessage: ErrorModel.fromJson(e.response!.data).errMessage,
+        return ServerFailure.fromBadResponse(
+          statusCode: e.response!.statusCode!,
+          data: e.response!.data,
         );
     }
+  }
+
+  factory ServerFailure.fromBadResponse({
+    required int statusCode,
+    required dynamic data,
+  }) {
+    String message = switch (statusCode) {
+      400 => 'Bad request. Please check your input.',
+      401 => ErrorModel.fromJson(data).errMessage,
+      403 => 'You don\'t have permission to perform this action.',
+      404 => 'The requested resource was not found.',
+      500 => 'Internal server error. Please try again later.',
+      _ => 'Unexpected error occurred. (Code: $statusCode)',
+    };
+    return ServerFailure(errMessage: message);
   }
 }
